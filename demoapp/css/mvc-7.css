@@ -1,0 +1,12 @@
+.show_red{
+    background-color: red;
+}
+.show_green{
+    background-color: green;
+}
+.error{
+    background-color: red;
+}
+.warning{
+    background-color: green;
+}

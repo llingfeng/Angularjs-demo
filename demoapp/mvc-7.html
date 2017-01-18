@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.js"></script>
+    <link rel="stylesheet" href="css/mvc-7.css">
+</head>
+<body>
+    <div ng-controller="MyCtrl">
+        <div class="show_{{color}}">你好</div>
+        <br>
+        <button ng-click="changeColor()">设置颜色</button>
+    </div>
+    <br>
+    <div ng-controller="MyCtrl2">
+        <div ng-class="{error:itError,warning:itWarning}">{{message}}</div>
+        <button ng-click="setError()">错误</button>
+        <button ng-click="setWarning()">警告</button>
+    </div>
+    <br>
+    <div ng-controller="MyCtrl3">
+        <button ng-click="toggleMenu()">ToggleMenu</button>
+        <ui ng-show="menuState.show">
+            <li>abc</li>
+            <li>abc</li>
+            <li>abc</li>
+        </ui>
+    </div>
+</body>
+<script>
+    var myModule = angular.module('MyModule',[]);
+    myModule.controller('MyCtrl',function ($scope) {
+        $scope.color = 'red';
+        $scope.changeColor = function () {
+            $scope.color = 'green'
+        }
+    });
+    myModule.controller('MyCtrl2',function ($scope) {
+        $scope.itError = false;
+        $scope.itWarning = false;
+        $scope.message = "无";
+        $scope.setError = function () {
+            $scope.message = '这是错误';
+            $scope.itError = true;
+            $scope.itWarning = false;
+        };
+        $scope.setWarning = function () {
+            $scope.message = '这是警告';
+            $scope.itWarning = true;
+            $scope.itError = false;
+        };
+    });
+    myModule.controller('MyCtrl3',function ($scope) {
+        $scope.menuState = {show:true};
+        $scope.toggleMenu = function () {
+            $scope.menuState.show = !$scope.menuState.show;
+        }
+    });
+</script>
+</html>

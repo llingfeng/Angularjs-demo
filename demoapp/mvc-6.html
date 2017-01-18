@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="UserInfoModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/angular.js"></script>
+</head>
+<body>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">双向数据绑定</div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form" ng-controller="UserInfoCtrl">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                邮箱：
+                            </label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" placeholder="请输入邮箱账号"
+                                ng-model="userInfo.email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">
+                                密码：
+                            </label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" placeholder="请输入密码"
+                                ng-model="userInfo.password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" ng-model="userInfo.autoLogin">记住秘密
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-default" ng-click="getUserInfo()">获取form表单的值</button>
+                                <button class="btn btn-default" ng-click="setUserInfo()">修改form表单的值</button>
+                                <button class="btn btn-default" ng-click="resetUserInfo()">重置form表单的值</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var userInfoModule = angular.module('UserInfoModule',[]);
+    userInfoModule.controller('UserInfoCtrl',function ($scope) {
+        $scope.userInfo = {
+            email:'123123123@qq.com',
+            password:'thisispassword',
+            autoLogin:true
+        };
+        $scope.getUserInfo = function () {
+            console.log($scope.userInfo)
+        };
+        $scope.setUserInfo = function () {
+            $scope.userInfo = {
+                email:'5555555555@qq.com',
+                password:'thisispassword',
+                autoLogin:true
+            }
+        };
+        $scope.resetUserInfo = function () {
+            $scope.userInfo = {
+                email:'123123123@qq.com',
+                password:'thisispassword',
+                autoLogin:true
+            }
+        };
+    });
+</script>
+</html>

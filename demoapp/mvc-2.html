@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-app="MyModule">
+    <div ng-controller="MyController1">
+        MyController1:{{count}}
+    </div>
+    <div ng-controller="MyController2">
+        MyController2:{{count}}
+    </div>
+</body>
+<script>
+    var myModule = angular.module('MyModule',[]);
+    myModule
+            .controller('MyController1',function ($scope) {
+                $scope.count = 101;
+            })
+            .controller('MyController2',function ($scope) {
+                $scope.count = 102;
+            })
+</script>
+</html>
